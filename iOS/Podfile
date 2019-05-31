@@ -1,5 +1,5 @@
 
-platform :ios, '8.0'
+platform :ios, '9.0'
 
 target 'cabin' do
   pod 'AFNetworking', '~> 3.0'
@@ -9,4 +9,12 @@ target 'cabin' do
   pod 'Helm', :path => '.'
   pod 'NVHTarGzip'
   pod 'YAMLThatWorks'
+end
+
+post_install do |installer_representation|
+    installer_representation.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['CLANG_ENABLE_OBJC_WEAK'] ||= 'YES'
+        end
+    end
 end

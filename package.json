@@ -14,7 +14,10 @@
     "pre-commit-lint":
       "LIST=`git diff --name-only --cached | grep .*\\.js$`;if [ \"$LIST\" ]; then eslint $LIST; fi",
     "prepare": "patch-package",
-    "test": "jest"
+    "test": "jest",
+    "ios": "react-native run-ios",
+    "android": "react-native run-android",
+    "bundle-ios": "react-native bundle --entry-file index.ios.js  --platform ios --dev false --bundle-output ./iOS/bundle/main.jsbundle --assets-dest ./iOS/bundle"
   },
   "jest": {
     "preset": "jest-react-native"
